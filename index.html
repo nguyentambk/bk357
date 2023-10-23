@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas1" style="width: 1000px"></canvas>
+    <button onclick="dung();">stop</button>
+    <button onclick="chay();">Start</button>
+    <button onclick="zoom();">Zoom</button>
+    <script type="text/javascript" src="./jsmpeg.js"></script>
+    <script>
+        var canvas = document.getElementById('canvas1');
+        var ws = new WebSocket("ws://192.168.88.65:9999")
+
+        var player = new jsmpeg(ws, { canvas: canvas, autoplay: false, audio: false, loop: true });
+        function chay() {
+            ws = new WebSocket("ws://192.168.88.65:9999")
+            player = new jsmpeg(ws, { canvas: canvas, autoplay: false, audio: false, loop: true });
+        }
+
+        function dung() {
+
+            // alert('aaa');
+            player.stop();
+
+        }
+        function zoom() {
+
+            // alert('aaa');
+            canvas.style.width = '500px';
+
+        }
+
+    </script>
+</body>
+
+</html>
